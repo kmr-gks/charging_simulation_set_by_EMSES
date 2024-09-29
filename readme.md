@@ -130,20 +130,34 @@ EMSESで用いるパラメータファイルの解説
 
 ## その他必要なもの
 
-### emses3d_ohhelp20
+### MPIEMSES3D リポジトリ
 EMSES本体のソースコード
-中身をいじってあるためGoogleクラスルームから要ダウンロード
+ビルドして、実行ファイルをシミュレーションフォルダーにコピーする
 
-初めにmakeで実行ファイル"mpiemses3d"をビルドすること
-
-使用の際は、ビルドした実行ファイルをシミュレーションフォルダーにコピーし以下のコマンドで実行する。
-
-(実際の仕様の際はjobファイルを作成しスパコンの実行キューに投入する)
-
+## 実行方法(2024年9月30日現在、camphorの場合)
+初回のみ、~/.bashrcにモジュールを読み込むコマンドを追加する
 ```
-$ <MPI_EXEC> ./mpiemses3D plasma.inp
-※ <MPI_EXEC>: MPI実行コマンド (camphor上では"aprun -n <NUMBER_OF_PROCESS>")
+echo >> ~/.bashrc
+echo module load intel-python >> ~/.bashrc
+echo >> ~/.bashrc
 ```
+
+MPIEMSES3Dをクローンしてmakeする
+```
+cd <MPIEMSES3D_repo_dir>
+source source_me_in_camphor.sh
+```
+シミュレーションフォルダにコピーする
+```
+cp ./bin/mpiemses3D <charging_simulation_set_by_EMSES_repo_dir>/exp_hole/
+```
+ジョブを投入する
+```
+cd <charging_simulation_set_by_EMSES_repo_dir>/exp_hole/
+mysbatch job.sh
+```
+※exp_holeの場合
+
 ### Anaconda(python環境)のcamphorへのロード(準備 1.で実施)
 
 ```
