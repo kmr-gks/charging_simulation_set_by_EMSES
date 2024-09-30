@@ -23,6 +23,7 @@ EMSES本体に関してはクラスルームから別途ダウンロードする
       - [4. 各シミュレーションフォルダ内のjobスクリプトの権限変更(必要ない可能性あり)](#4-各シミュレーションフォルダ内のjobスクリプトの権限変更必要ない可能性あり)
       - [5. 各シミュレーションフォルダ内のjobスクリプトの変更(下記ツール(camptools)を用いる場合必要なし)](#5-各シミュレーションフォルダ内のjobスクリプトの変更下記ツールcamptoolsを用いる場合必要なし)
       - [6. (便利ツール集のインストール)](#6-便利ツール集のインストール)
+    - [実行](#実行方法2024年9月30日現在camphorの場合)
     - [実行](#実行)
       - [下記ツール(camptools)を用いる場合](#下記ツールcamptoolsを用いる場合)
     - [解析](#解析)
@@ -134,30 +135,6 @@ EMSESで用いるパラメータファイルの解説
 EMSES本体のソースコード
 ビルドして、実行ファイルをシミュレーションフォルダーにコピーする
 
-## 実行方法(2024年9月30日現在、camphorの場合)
-初回のみ、~/.bashrcにモジュールを読み込むコマンドを追加する
-```
-echo >> ~/.bashrc
-echo module load intel-python >> ~/.bashrc
-echo >> ~/.bashrc
-```
-
-MPIEMSES3Dをクローンしてmakeする
-```
-cd <MPIEMSES3D_repo_dir>
-source source_me_in_camphor.sh
-```
-シミュレーションフォルダにコピーする
-```
-cp ./bin/mpiemses3D <charging_simulation_set_by_EMSES_repo_dir>/exp_hole/
-```
-ジョブを投入する
-```
-cd <charging_simulation_set_by_EMSES_repo_dir>/exp_hole/
-mysbatch job.sh
-```
-※exp_holeの場合
-
 ### Anaconda(python環境)のcamphorへのロード(準備 1.で実施)
 
 ```
@@ -216,6 +193,35 @@ $ vim <simulation-folder>/job.sh
 
 #### 6. (便利ツール集のインストール)
 任意でページ下部にあるツール集をインストールする。
+
+### 実行方法(2024年9月30日現在、camphorの場合)
+初回のみ、~/.bashrcにモジュールを読み込むコマンドを追加する(要再ログイン)
+```
+echo >> ~/.bashrc
+echo module load intel-python >> ~/.bashrc
+echo >> ~/.bashrc
+```
+
+初回のみ、再ログイン後
+```
+pip install camptools
+```
+
+MPIEMSES3Dをクローンしてmakeする
+```
+cd <MPIEMSES3D_repo_dir>
+source source_me_in_camphor.sh
+```
+シミュレーションフォルダにコピーする
+```
+cp ./bin/mpiemses3D <charging_simulation_set_by_EMSES_repo_dir>/exp_hole/
+```
+ジョブを投入する
+```
+cd <charging_simulation_set_by_EMSES_repo_dir>/exp_hole/
+mysbatch job.sh
+```
+※exp_holeの場合
 
 ### 実行
 ```    

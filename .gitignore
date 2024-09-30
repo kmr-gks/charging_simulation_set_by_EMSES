@@ -1,3 +1,26 @@
+# Simulation results
+SNAPSHOT*/
+*.h5
+*.xdmf
+chgacm*
+chgmov
+currnt
+energy*
+ewave
+*cur
+*flux
+nesc
+noflux
+oltime
+pbody*
+seyield
+*.out
+volt
+
+# Executable files
+mpiemses3D
+myjob.sh
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
