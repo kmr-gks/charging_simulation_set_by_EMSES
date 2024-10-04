@@ -26,3 +26,9 @@ alias js="job_status"  # show all running job output (= qcat -o <job-id>)
 alias je="job_status -e"  # show all running job error output (= qcat -e <job-id>)
 alias jl="joblist"  # show all runnging job status (≒ qs; qgroup)
 alias chk="checkpoint"
+
+#このpythonを使用する
+module load intel-python/2024.2  
+
+#pythonはこのパスにあるものを使う
+#export PATH=/opt/system/app/intelpython/2024.2.0/bin/:$PATH

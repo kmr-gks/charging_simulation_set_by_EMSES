@@ -34,7 +34,4 @@ python generate_xdmf3.py phisp00_0000.h5
 python generate_xdmf3.py ex00_0000.h5 ey00_0000.h5 ez00_0000.h5
 python generate_xdmf3.py j1x00_0000.h5 j1y00_0000.h5 j1z00_0000.h5 j2x00_0000.h5 j2y00_0000.h5 j2z00_0000.h5 j3x00_0000.h5 j3y00_0000.h5 j3z00_0000.h5
 
-mypython plot.py ./
-mypython plot_hole.py ./
-
 date
