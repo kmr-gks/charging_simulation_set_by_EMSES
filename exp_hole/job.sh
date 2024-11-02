@@ -1,12 +1,25 @@
 #!/bin/bash
 #SBATCH -p gr20001a
-#SBATCH --rsc p=32:t=1:c=1
+#SBATCH --rsc p=128:t=1:c=1
 #SBATCH -t 168:00:00
+
 # 日付の変数を作成（年-月-日-時-分-秒）
 DATE=$(date +"%Y-%m-%d_%H-%M-%S")
+JOB_ID=${PJM_JOBID}
 
-# 標準出力と標準エラー出力を別のファイルにリダイレクト
-exec > $DATE.out.log 2> $DATE.err.log
+# 標準出力と標準エラー出力をリダイレクト
+exec > "${DATE}_${JOB_ID}.log" 2>&1
+
+#環境変数を表示
+echo "LD_LIBRARY_PATH="
+echo $LD_LIBRARY_PATH
+echo "PATH="
+echo $PATH
+
+# 自分自身のスクリプトファイルの内容を出力
+echo "===== ジョブスクリプトの内容 ====="
+cat "$0"
+echo "===== 実行開始 ====="
 
 #set -x
 #export LD_LIBRARY_PATH="/LARGE0/gr20001/KUspace-share/common/hdf5-lib/hdf5-1.14.3-240410/lib:/LARGE0/gr20001/KUspace-share/common/fftw-lib/fftw-3.3.10-240410/lib:$LD_LIBRARY_PATH"
